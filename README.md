@@ -255,3 +255,18 @@ private string decrypt(string value)
     return request.DecryptedValue;
 }
 ```
+
+### Custom Planner Action Service Classes
+This agent uses a custm service class, implemented to facilitate the communication with Microsoft Graph API.
+
+```csharp
+public PlannerActionService(string clientId, string tenantId, string userName, string passwordString)
+{
+    CreateGraphClient(clientId, tenantId);
+
+    Task.Run(() => AuthenticateGraphClient(userName, passwordString)).Wait();
+}
+```
+
+
+
